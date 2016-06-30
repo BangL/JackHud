@@ -2600,14 +2600,7 @@ do
 	function HUDList.ECMItem:init(parent, name)
 		HUDList.ItemBase.init(self, parent, name, { align = "right", w = parent:panel():h(), h = parent:panel():h() })
 		
-		battery_upgrade_level = 1
-		if tweak_data.upgrades.values.ecm_jammer.duration_multiplier[1] then
-			battery_upgrade_level = battery_upgrade_level + 1
-		end
-		
-		if tweak_data.upgrades.values.ecm_jammer.duration_multiplier_2[1] then
-			battery_upgrade_level = battery_upgrade_level + 1
-		end
+		battery_upgrade_level = managers.player:upgrade_level("ecm_jammer", "duration_multiplier", 0) + managers.player:upgrade_level("ecm_jammer", "duration_multiplier_2", 0) + 1
 		
 		self._max_duration = tweak_data.upgrades.ecm_jammer_base_battery_life * ECMJammerBase.battery_life_multiplier[battery_upgrade_level]
 
