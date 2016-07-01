@@ -69,6 +69,7 @@ if not JackHUD.setup then
 		["lib/units/props/securitycamera"] = "SecurityCamera_ext.lua",
 		["lib/units/props/timergui"] = "TimerGui_ext.lua",
 		["lib/units/weapons/newraycastweaponbase"] = "NewRayCastWeaponBase_ext.lua",
+		["lib/units/weapons/shotgun/newshotgunabse"] = "NewShotgunBase_ext.lua",
 		["lib/units/weapons/raycastweaponbase"] = "RayCastWeaponBase_ext.lua",
 		["lib/units/weapons/sentrygunweapon"] = "SentryGunWeapon_ext.lua",
 		["lib/units/weapons/weaponflashlight"] = "WeaponFlashlight_ext.lua",
