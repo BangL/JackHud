@@ -1,4 +1,7 @@
 
+1.19r45:
+- fixed ECM Jammer timer for U104 [by Spyboticsguy]
+
 1.19r44:
 - version bump for jackpack notification
 
