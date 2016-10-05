@@ -1,47 +1,33 @@
 
-local init_original = SentryGunDamage.init
-local set_health_original = SentryGunDamage.set_health
-local _apply_damage_original = SentryGunDamage._apply_damage
-local die_original = SentryGunDamage.die
-local load_original = SentryGunDamage.load
-
-function SentryGunDamage:init(...)
-	init_original(self, ...)
-	if SentryGunBase.SPAWNED_SENTRIES[self._unit:key()] then
-		SentryGunBase.SPAWNED_SENTRIES[self._unit:key()].active = true
-		UnitBase._do_listener_callback("on_sentry_set_active", self._unit, true)
-		self:_update_health()
+	local init_original = SentryGunDamage.init
+	local set_health_original = SentryGunDamage.set_health
+	local _apply_damage_original = SentryGunDamage._apply_damage
+	local die_original = SentryGunDamage.die
+	local load_original = SentryGunDamage.load
+	
+	function SentryGunDamage:init(...)
+		init_original(self, ...)
+		managers.gameinfo:event("sentry", "set_active", tostring(self._unit:key()), true)
+		managers.gameinfo:event("sentry", "set_health_ratio", tostring(self._unit:key()), self:health_ratio())
 	end
-end
-
-function SentryGunDamage:set_health(...)
-	set_health_original(self, ...)
-	self:_update_health()
-end
-
-function SentryGunDamage:_apply_damage(...)
-	local result = _apply_damage_original(self, ...)
-	self:_update_health()
-	return result
-end
-
-function SentryGunDamage:die(...)
-	die_original(self, ...)
-	if SentryGunBase.SPAWNED_SENTRIES[self._unit:key()] then
-		SentryGunBase.SPAWNED_SENTRIES[self._unit:key()].active = nil
-		UnitBase._do_listener_callback("on_sentry_set_active", self._unit, false)
+	
+	function SentryGunDamage:set_health(...)
+		set_health_original(self, ...)
+		managers.gameinfo:event("sentry", "set_health_ratio", tostring(self._unit:key()), self:health_ratio())
 	end
-end
-
-function SentryGunDamage:load(...)
-	load_original(self, ...)
-	self:_update_health()
-end
-
-
-function SentryGunDamage:_update_health()
-	if SentryGunBase.SPAWNED_SENTRIES[self._unit:key()] then
-		SentryGunBase.SPAWNED_SENTRIES[self._unit:key()].health = self:health_ratio()
-		UnitBase._do_listener_callback("on_sentry_health_update", self._unit, self:health_ratio())
+	
+	function SentryGunDamage:_apply_damage(...)
+		local result = _apply_damage_original(self, ...)
+		managers.gameinfo:event("sentry", "set_health_ratio", tostring(self._unit:key()), self:health_ratio())
+		return result
 	end
-end
+	
+	function SentryGunDamage:die(...)
+		managers.gameinfo:event("sentry", "set_active", tostring(self._unit:key()), false)
+		return die_original(self, ...)
+	end
+	
+	function SentryGunDamage:load(...)
+		load_original(self, ...)
+		managers.gameinfo:event("sentry", "set_health_ratio", tostring(self._unit:key()), self:health_ratio())
+	end

@@ -2,11 +2,11 @@
 	"name" : "JackHUD",
 	"description" : "A GageHUD fork",
 	"author" : "Seven, cjur3, BangL, Kail, cjure, undeadsewer, thatguyfrombreakingbad, Martini and the RestorationMod-Crew, TimeR",
-	"version" : "1.19",
+	"version" : "1.18",
 	"priority": -1,
 	"updates" : [
 		{
-			"revision" : 47,
+			"revision" : 42,
 			"identifier" : "jackhud",
 		},
 		{
@@ -61,12 +61,21 @@
 		{"script_path" : "JackHUD.lua", "hook_id" : "lib/units/props/securitycamera"},
 		{"script_path" : "JackHUD.lua", "hook_id" : "lib/units/props/timergui"},
 		{"script_path" : "JackHUD.lua", "hook_id" : "lib/units/weapons/newraycastweaponbase"},
-		{"script_path" : "JackHUD.lua", "hook_id" : "lib/units/weapons/shotgun/newshotgunbase"},
 		{"script_path" : "JackHUD.lua", "hook_id" : "lib/units/weapons/raycastweaponbase"},
 		{"script_path" : "JackHUD.lua", "hook_id" : "lib/units/weapons/sentrygunweapon"},
 		{"script_path" : "JackHUD.lua", "hook_id" : "lib/units/weapons/weaponflashlight"},
 		{"script_path" : "JackHUD.lua", "hook_id" : "lib/units/weapons/weaponlaser"},
-		{"script_path" : "JackHUD.lua", "hook_id" : "lib/units/unitbase"}
+		{"script_path" : "JackHUD.lua", "hook_id" : "lib/units/unitbase"},
+		{"script_path" : "JackHUD.lua", "hook_id" : "lib/setups/gamesetup"},
+		{"script_path" : "JackHUD.lua", "hook_id" : "lib/units/props/securitylockgui"},
+		{"script_path" : "JackHUD.lua", "hook_id" : "lib/units/interactions/interactionext"},
+		{"script_path" : "JackHUD.lua", "hook_id" : "lib/player_actions/skills/playeractionbloodthirstbase"},
+		{"script_path" : "JackHUD.lua", "hook_id" : "lib/player_actions/skills/playeractionexperthandling"},
+		{"script_path" : "JackHUD.lua", "hook_id" : "lib/player_actions/skills/playeractionshockandawe"},
+		{"script_path" : "JackHUD.lua", "hook_id" : "lib/player_actions/skills/playeractiondireneed"},
+		{"script_path" : "JackHUD.lua", "hook_id" : "lib/player_actions/skills/playeractionunseenstrike"},
+		{"script_path" : "JackHUD.lua", "hook_id" : "lib/player_actions/skills/playeractionammoefficiency"},
+		{"script_path" : "JackHUD.lua", "hook_id" : "lib/player_actions/skills/playeractiontriggerhappy"}
 	],
 	"keybinds" : [
 		{
