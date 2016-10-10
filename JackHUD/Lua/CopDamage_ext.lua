@@ -50,9 +50,12 @@ function CopDamage:damage_bullet(attack_data, ...)
 end
 
 function CopDamage:damage_explosion(attack_data, ...)
-	local result = explosion_original(self, attack_data, ...)
-	if result and result.type == "death" then self:_process_kill(attack_data.attacker_unit) end
-	return result
+	if not self:dead() then
+		explosion_original(self, attack_data, ...)
+		if self:dead() and alive(attack_data.attacker_unit) then
+			self:_process_kill(attack_data.attacker_unit, attack_data.col_ray and attack_data.col_ray.body and self._unit:get_body_index(attack_data.col_ray.body:name()))
+		end
+	end
 end
 
 function CopDamage:damage_melee(attack_data, ...)
