@@ -68,6 +68,7 @@ if not JackHUD.setup then
 		["lib/units/props/missiondoor"] = "MissionDoor_ext.lua",
 		["lib/units/props/securitycamera"] = "SecurityCamera_ext.lua",
 		["lib/units/props/timergui"] = "TimerGui_ext.lua",
+		["lib/units/weapons/newraycastweaponbase"] = "NewRayCastWeaponBase_ext.lua",
 		["lib/units/weapons/sentrygunweapon"] = "SentryGunWeapon_ext.lua",
 		["lib/units/weapons/weaponflashlight"] = "WeaponFlashlight_ext.lua",
 		["lib/units/weapons/weaponlaser"] = "WeaponLaser_ext.lua",
@@ -88,8 +89,7 @@ if not JackHUD.setup then
 			simpleBusyIndicator = true
 		},
 		game = {
-			interactionClickStick = true,
-			rememberGadgetState = true
+			interactionClickStick = true
 		},
 		playerBottom = {
 			showRank = true,
